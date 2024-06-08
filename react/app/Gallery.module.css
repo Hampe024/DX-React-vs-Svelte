@@ -1,0 +1,21 @@
+.gallery {
+    padding-top: 3rem;
+    font-size: 1.3rem;
+}
+
+.gallery p {
+    padding: 1rem;
+}
+
+.img {
+    padding: 1rem;
+}
+
+.img:nth-of-type(1),
+.img:nth-of-type(3) {
+    float: right;
+}
+
+.img:nth-of-type(2) {
+    float: left;
+}
