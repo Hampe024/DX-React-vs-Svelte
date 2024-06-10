@@ -11,7 +11,7 @@ import Forecast from "./Forecast";
 
 export default function Weather() {
     const [city, setCity] = useState<string>("");
-    const [weather, setWeather] = useState<object | null>(null);
+    const [weather, setWeather] = useState<any | null>(null);
     const [error, setError] = useState<string>("");
 
     useEffect(() => {
@@ -72,7 +72,7 @@ export default function Weather() {
                             weather={weather.current_condition[0]}
                         />
                         <div className={styles.weatherForecast}>
-                            {Object.values(weather.weather).map((day: object) => {
+                            {Object.values(weather.weather).map((day: any) => {
                                 return (
                                     <Forecast
                                         className={styles.weatherForecastDay}

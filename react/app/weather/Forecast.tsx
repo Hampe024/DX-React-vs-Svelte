@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-export default function Forecast({ className, day }) {
+export default function Forecast({ className, day }: { className: string; day: any }) {
     const dateObj = new Date(day.date);
     const weekday = dateObj.toLocaleDateString('en-US', { weekday: 'long' });
 

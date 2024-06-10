@@ -8,8 +8,8 @@ import ReactSlider from 'react-slider';
 import styles from "./page.module.css";
 
 export default function GDPChart() {
-    const [gdpData, setGdpData] = useState({});
-    const [dateRange, setDateRange] = useState([1974, 2022]);
+    const [gdpData, setGdpData] = useState<any>({});
+    const [dateRange, setDateRange] = useState<[number, number]>([1974, 2022]);
     const countries = [
         { code: 'SWE', name: 'Sweden', color: "#89cff0" },
         { code: 'NOR', name: 'Norway', color: "#dfe2ec" },
@@ -30,7 +30,7 @@ export default function GDPChart() {
         });
 
         const results = await Promise.all(fetchDataPromises);
-        const data = {};
+        const data: Record<string, any> = {};
         results.forEach(result => {
             data[result.code] = result.data;
         });
@@ -40,18 +40,21 @@ export default function GDPChart() {
 
     const formatDataForChart = () => {
         const labels = gdpData[countries[0].code] 
-        ? gdpData[countries[0].code].map(entry => entry.date).filter(date => date >= dateRange[0] && date <= dateRange[1])
-        : [];
+            ? gdpData[countries[0].code]
+                .map((entry: any) => entry.date)
+                .filter((date: any) => date >= dateRange[0] && date <= dateRange[1])
+            : [];
         const datasets = countries.map(country => {
-            
             return {
                 label: `${country.name} GDP`,
                 data: gdpData[country.code]
-                ? gdpData[country.code].map(entry => entry.value).filter((_, index) => {
-                    const date = gdpData[country.code][index].date;
-                    return date >= dateRange[0] && date <= dateRange[1];
-                })
-                : [],
+                    ? gdpData[country.code]
+                        .map((entry: any) => entry.value)
+                        .filter((_: number, index: number) => {
+                            const date = gdpData[country.code][index].date;
+                            return date >= dateRange[0] && date <= dateRange[1];
+                    })
+                    : [],
                 fill: false,
                 backgroundColor: country.color,
                 borderColor: country.color,
@@ -64,7 +67,7 @@ export default function GDPChart() {
         };
     };
 
-    const handleSliderChange = (values) => {
+    const handleSliderChange = (values: [number, number]) => {
         setDateRange(values);
     };
 
