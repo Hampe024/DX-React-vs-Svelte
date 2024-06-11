@@ -3,9 +3,14 @@
 	"version": "1.0.0",
 	"description": "Repo for comparing React.js and Svelte.js in terms of DX and usability.",
 	"scripts": {
+		"install:all": "npm run install:svelte && npm run install:react",
+		"install:svelte": "cd svelte && npm install",
+		"install:react": "cd react && npm install",
+
 		"build:all": "npm run build:svelte && npm run build:react",
 		"build:svelte": "cd svelte && npm run build",
 		"build:react": "cd react && npm run build",
+
 		"start:all": "npm run start:svelte && npm run start:react",
 		"start:svelte": "cd svelte && npm run preview",
 		"start:react": "cd react && npm run start"
