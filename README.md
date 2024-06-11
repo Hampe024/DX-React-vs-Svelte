@@ -5,7 +5,7 @@ Repo for comparing React.js and Svelte.js in terms of DX and usability.
 
 1. Install all dependencies:
     ```sh
-    npm run install
+    npm run setup
     ```
 
 2. Build the environment:
