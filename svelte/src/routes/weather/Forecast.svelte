@@ -5,6 +5,14 @@
     const weekday = dateObj.toLocaleDateString('en-US', { weekday: 'long' });
 </script>
 
+<div class="weatherForecastDay">
+    <div>{weekday}</div>
+    <div>{day.mintempC}°C - {day.maxtempC}°C</div>
+    <div>{day.hourly[4].weatherDesc[0].value}</div>
+    <div>Sunrise - Sunset</div>
+    <div>{day.astronomy[0].sunrise} - {day.astronomy[0].sunset}</div>
+</div>
+
 <style>
     .weatherForecastDay {
         display: grid;
@@ -46,11 +54,3 @@
         margin-bottom: -2rem;
     }
 </style>
-
-<div class="weatherForecastDay">
-    <div>{weekday}</div>
-    <div>{day.mintempC}°C - {day.maxtempC}°C</div>
-    <div>{day.hourly[4].weatherDesc[0].value}</div>
-    <div>Sunrise - Sunset</div>
-    <div>{day.astronomy[0].sunrise} - {day.astronomy[0].sunset}</div>
-</div>

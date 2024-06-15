@@ -36,6 +36,35 @@
     }
 </script>
 
+<div>
+    <div class="inputContainer">
+        <input
+            class="cityInput"
+            type="text"
+            bind:value={city}
+            placeholder="Enter city name"
+        />
+    </div>
+    <!-- {#if error}
+        <p>{error}</p>
+    {/if} -->
+    {#if weather}
+        <p class="currentCity">
+            Weather in {weather.nearest_area[0].areaName[0].value}, {weather.nearest_area[0].region[0].value} in {weather.nearest_area[0].country[0].value}
+        </p>
+        <div class="weather">
+            <Current
+                weather={weather.current_condition[0]}
+            />
+            <div class="weatherForecast">
+                {#each Object.values(weather.weather) as day}
+                    <Forecast {day} />
+                {/each}
+            </div>
+        </div>
+    {/if}
+</div>
+
 <style>
     .inputContainer {
         margin: auto;
@@ -68,32 +97,3 @@
         gap: 2rem;
     }
 </style>
-
-<div>
-    <div class="inputContainer">
-        <input
-            class="cityInput"
-            type="text"
-            bind:value={city}
-            placeholder="Enter city name"
-        />
-    </div>
-    <!-- {#if error}
-        <p>{error}</p>
-    {/if} -->
-    {#if weather}
-        <p class="currentCity">
-            Weather in {weather.nearest_area[0].areaName[0].value}, {weather.nearest_area[0].region[0].value} in {weather.nearest_area[0].country[0].value}
-        </p>
-        <div class="weather">
-            <Current
-                weather={weather.current_condition[0]}
-            />
-            <div class="weatherForecast">
-                {#each Object.values(weather.weather) as day}
-                    <Forecast {day} />
-                {/each}
-            </div>
-        </div>
-    {/if}
-</div>

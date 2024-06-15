@@ -9,6 +9,28 @@
     }
 </script>
 
+<div class="weatherCurrent">
+    <h3>
+        Current (observed {formatDate(weather.localObsDateTime)})
+    </h3>
+    <div>
+        Wind:
+        <img
+            src={arrow}
+            width={25}
+            height={25}
+            alt={weather.winddir16Point}
+            style={`transform: rotate(${weather.winddirDegree}deg)`}
+        />
+        {weather.windspeedKmph} km/h
+    </div>
+    <div>{weather.temp_C}°C, feels like: {weather.FeelsLikeC}°C</div>
+    <div>Condition: {weather.weatherDesc[0].value}</div>
+    <div>UV index: {weather.uvIndex}</div>
+    <div>Cloudcoverage: {weather.cloudcover}%</div>
+    <div>Humidity: {weather.humidity}%</div>
+</div>
+
 <style>
     .weatherCurrent {
         font-size: 2rem;
@@ -39,25 +61,3 @@
         text-align: right;
     }
 </style>
-
-<div class="weatherCurrent">
-    <h3>
-        Current (observed {formatDate(weather.localObsDateTime)})
-    </h3>
-    <div>
-        Wind:
-        <img
-            src={arrow}
-            width={25}
-            height={25}
-            alt={weather.winddir16Point}
-            style={`transform: rotate(${weather.winddirDegree}deg)`}
-        />
-        {weather.windspeedKmph} km/h
-    </div>
-    <div>{weather.temp_C}°C, feels like: {weather.FeelsLikeC}°C</div>
-    <div>Condition: {weather.weatherDesc[0].value}</div>
-    <div>UV index: {weather.uvIndex}</div>
-    <div>Cloudcoverage: {weather.cloudcover}%</div>
-    <div>Humidity: {weather.humidity}%</div>
-</div>
